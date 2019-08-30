@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Modal from './Modal';
 
 function App() {
+
+  let [ showModal, manageModal ] = useState(false);
+
+  const onModalClose = () => {
+    manageModal(!showModal);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => manageModal(!showModal)}>Show Modal</button>
+      {
+        showModal ? 
+        (
+          <Modal title={'React Portals'} onClose={() => onModalClose()} content={<div>
+            Modal Content
+          </div>}> 
+            
+          </Modal>
+        ) : null
+      }
     </div>
   );
 }
