@@ -12,14 +12,20 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => manageModal(!showModal)}>Show Modal</button>
+      <button className="margin-auto" onClick={() => manageModal(!showModal)}>Show Modal</button>
       {
         showModal ? 
         (
-          <Modal title={'React Portals'} onClose={() => onModalClose()} content={<div>
-            Modal Content
-          </div>}> 
-            
+          <Modal title={'Login'} onClose={() => onModalClose()} width={500}>
+            <div className="login-form">
+              <input type="email" placeholder="Email" className="text-input"/>
+              <input type="password" placeholder="Password" className="text-input"/>
+              <button className="login-button">Login</button>
+              <div className="login-buttons">
+                <button className="login-button signup-button">Forgot password?</button>
+                <button className="login-button signup-button">Create Account</button>
+              </div>
+            </div>
           </Modal>
         ) : null
       }
